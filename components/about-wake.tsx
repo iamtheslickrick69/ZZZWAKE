@@ -73,7 +73,7 @@ export function AboutWake() {
 
   return (
     <section id="about" className="w-full">
-      {/* ===== HERO HEADER - Right above the card ===== */}
+      {/* ===== HERO HEADER - Centered Layout ===== */}
       <motion.div
         initial="hidden"
         whileInView="visible"
@@ -81,17 +81,17 @@ export function AboutWake() {
         variants={containerVariants}
         className="bg-background"
       >
-        <div className="container mx-auto px-6 py-12 md:py-16">
-          {/* Top Row: Label + Avatar */}
-          <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mb-8">
-            {/* Label */}
-            <motion.p
-              variants={itemVariants}
-              className="text-muted-foreground text-xs tracking-[0.3em] uppercase"
-            >
-              Meet the Founder
-            </motion.p>
+        <div className="container mx-auto px-6 py-12 md:py-16 text-center">
+          {/* Label */}
+          <motion.p
+            variants={itemVariants}
+            className="text-muted-foreground text-xs tracking-[0.3em] uppercase mb-6"
+          >
+            Meet the Founder
+          </motion.p>
 
+          {/* Title + Avatar Row */}
+          <div className="flex flex-col md:flex-row items-center justify-center gap-4 md:gap-6 mb-4">
             {/* Avatar + Name */}
             <motion.div variants={itemVariants} className="flex items-center gap-3">
               <div className="relative">
@@ -102,44 +102,42 @@ export function AboutWake() {
                 />
                 <div className="absolute -bottom-0.5 -right-0.5 w-3 h-3 bg-green-500 rounded-full border-2 border-background" />
               </div>
-              <div>
+              <div className="text-left">
                 <p className="font-bold text-foreground">Wake Schepman</p>
                 <p className="text-sm text-muted-foreground">Founder & Growth Strategist</p>
               </div>
             </motion.div>
-          </div>
 
-          {/* Title Row */}
-          <motion.h1
-            variants={itemVariants}
-            className="text-3xl md:text-4xl lg:text-5xl font-bold leading-[1.1] text-foreground mb-4"
-          >
-            From Pro Skater to{" "}
-            <span className="text-accent">Growth Marketing</span>
-          </motion.h1>
-
-          {/* Accent line */}
-          <motion.div variants={itemVariants} className="h-1 w-20 bg-accent mb-4" />
-
-          {/* Bottom Row: Subtitle + CTA */}
-          <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
-            <motion.p
+            {/* Title */}
+            <motion.h1
               variants={itemVariants}
-              className="max-w-md text-muted-foreground leading-relaxed"
+              className="text-3xl md:text-4xl lg:text-5xl font-bold leading-[1.1] text-foreground"
             >
-              How professional skating taught me that success comes from authentic storytelling and relentless execution.
-            </motion.p>
-
-            <motion.div variants={itemVariants}>
-              <Link
-                href="#contact"
-                className="inline-flex items-center gap-2 text-sm font-bold tracking-widest text-accent transition-colors hover:text-accent/80"
-              >
-                LET'S WORK TOGETHER
-                <ArrowRight className="w-4 h-4" />
-              </Link>
-            </motion.div>
+              From Pro Skater to{" "}
+              <span className="text-accent">Growth Marketing</span>
+            </motion.h1>
           </div>
+
+          {/* Accent line - centered */}
+          <motion.div variants={itemVariants} className="h-1 w-20 bg-accent mx-auto mb-4" />
+
+          {/* Subtitle + CTA - centered */}
+          <motion.p
+            variants={itemVariants}
+            className="max-w-lg mx-auto text-muted-foreground leading-relaxed mb-4"
+          >
+            How professional skating taught me that success comes from authentic storytelling and relentless execution.
+          </motion.p>
+
+          <motion.div variants={itemVariants}>
+            <Link
+              href="#contact"
+              className="inline-flex items-center gap-2 text-sm font-bold tracking-widest text-accent transition-colors hover:text-accent/80"
+            >
+              LET'S WORK TOGETHER
+              <ArrowRight className="w-4 h-4" />
+            </Link>
+          </motion.div>
         </div>
       </motion.div>
 
