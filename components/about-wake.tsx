@@ -73,69 +73,78 @@ export function AboutWake() {
 
   return (
     <section id="about" className="w-full">
-      {/* ===== HERO SECTION - Centered, No Gallery ===== */}
-      <div className="relative bg-foreground text-background">
+      {/* ===== HERO SECTION - White Background, Spread Out ===== */}
+      <div className="relative bg-background">
         <motion.div
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, amount: 0.3 }}
           variants={containerVariants}
-          className="container mx-auto px-6 py-16 md:py-24 text-center"
+          className="container mx-auto px-6 py-20 md:py-32"
         >
-          {/* Label */}
-          <motion.p
-            variants={itemVariants}
-            className="text-background/50 text-xs tracking-[0.3em] uppercase mb-6"
-          >
-            Meet the Founder
-          </motion.p>
-
-          {/* Avatar + Name */}
-          <motion.div variants={itemVariants} className="flex items-center justify-center gap-4 mb-8">
-            <div className="relative">
-              <img
-                src="/images/wake-headshot.png"
-                alt="Wake Schepman"
-                className="w-16 h-16 rounded-full object-cover ring-2 ring-background/20"
-              />
-              <div className="absolute -bottom-0.5 -right-0.5 w-4 h-4 bg-green-500 rounded-full border-2 border-foreground" />
-            </div>
-            <div className="text-left">
-              <p className="text-xl font-bold text-background">Wake Schepman</p>
-              <p className="text-sm text-background/60">Founder & Growth Strategist</p>
-            </div>
-          </motion.div>
-
-          {/* Title */}
-          <motion.h1
-            variants={itemVariants}
-            className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold leading-[1.1] text-background mb-6 max-w-5xl mx-auto"
-          >
-            From Pro Skater to{" "}
-            <span className="text-accent">Growth Marketing</span>
-          </motion.h1>
-
-          {/* Accent line */}
-          <motion.div variants={itemVariants} className="h-1 w-20 bg-accent mb-6 mx-auto" />
-
-          {/* Subtitle */}
-          <motion.p
-            variants={itemVariants}
-            className="max-w-xl mx-auto text-lg text-background/70 leading-relaxed mb-8"
-          >
-            How professional skating taught me that success comes from authentic storytelling and relentless execution.
-          </motion.p>
-
-          {/* CTA */}
-          <motion.div variants={itemVariants}>
-            <Link
-              href="#contact"
-              className="inline-flex items-center gap-2 text-lg font-bold tracking-widest text-accent transition-colors hover:text-accent/80"
+          {/* Top Row: Label + Avatar */}
+          <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-6 mb-12">
+            {/* Label */}
+            <motion.p
+              variants={itemVariants}
+              className="text-muted-foreground text-xs tracking-[0.3em] uppercase"
             >
-              LET'S WORK TOGETHER
-              <ArrowRight className="w-5 h-5" />
-            </Link>
-          </motion.div>
+              Meet the Founder
+            </motion.p>
+
+            {/* Avatar + Name */}
+            <motion.div variants={itemVariants} className="flex items-center gap-4">
+              <div className="relative">
+                <img
+                  src="/images/wake-headshot.png"
+                  alt="Wake Schepman"
+                  className="w-14 h-14 rounded-full object-cover ring-2 ring-border"
+                />
+                <div className="absolute -bottom-0.5 -right-0.5 w-3.5 h-3.5 bg-green-500 rounded-full border-2 border-background" />
+              </div>
+              <div>
+                <p className="text-lg font-bold text-foreground">Wake Schepman</p>
+                <p className="text-sm text-muted-foreground">Founder & Growth Strategist</p>
+              </div>
+            </motion.div>
+          </div>
+
+          {/* Main Content - Wider Layout */}
+          <div className="max-w-6xl">
+            {/* Title */}
+            <motion.h1
+              variants={itemVariants}
+              className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold leading-[1.05] text-foreground mb-8"
+            >
+              From Pro Skater to{" "}
+              <span className="text-accent">Growth Marketing</span>
+            </motion.h1>
+
+            {/* Accent line */}
+            <motion.div variants={itemVariants} className="h-1 w-24 bg-accent mb-8" />
+
+            {/* Bottom Row: Subtitle + CTA */}
+            <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-8">
+              {/* Subtitle */}
+              <motion.p
+                variants={itemVariants}
+                className="max-w-lg text-lg md:text-xl text-muted-foreground leading-relaxed"
+              >
+                How professional skating taught me that success comes from authentic storytelling and relentless execution.
+              </motion.p>
+
+              {/* CTA */}
+              <motion.div variants={itemVariants} className="shrink-0">
+                <Link
+                  href="#contact"
+                  className="inline-flex items-center gap-2 text-base font-bold tracking-widest text-accent transition-colors hover:text-accent/80"
+                >
+                  LET'S WORK TOGETHER
+                  <ArrowRight className="w-5 h-5" />
+                </Link>
+              </motion.div>
+            </div>
+          </div>
         </motion.div>
       </div>
 
