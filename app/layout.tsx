@@ -12,21 +12,30 @@ export const metadata: Metadata = {
     "MAW Marketing helps established companies optimize their existing marketing investments. We eliminate waste, amplify what works, and build systematic growth your team can maintain and scale.",
   generator: "v0.app",
   icons: {
-    icon: [
+    icon: "/favicon.png",
+    apple: "/apple-touch-icon.png",
+  },
+  openGraph: {
+    title: "MAW Marketing — Growth Agency",
+    description: "We turn marketing spend into predictable revenue. Optimize what works, eliminate waste, and build systematic growth.",
+    url: "https://wake.haestus.dev",
+    siteName: "MAW Marketing",
+    images: [
       {
-        url: "/icon-light-32x32.png",
-        media: "(prefers-color-scheme: light)",
-      },
-      {
-        url: "/icon-dark-32x32.png",
-        media: "(prefers-color-scheme: dark)",
-      },
-      {
-        url: "/icon.svg",
-        type: "image/svg+xml",
+        url: "/og-image.png",
+        width: 1200,
+        height: 630,
+        alt: "MAW Marketing",
       },
     ],
-    apple: "/apple-icon.png",
+    locale: "en_US",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "MAW Marketing — Growth Agency",
+    description: "We turn marketing spend into predictable revenue.",
+    images: ["/og-image.png"],
   },
 }
 
