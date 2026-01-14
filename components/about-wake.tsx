@@ -79,13 +79,13 @@ export function AboutWake() {
         whileInView="visible"
         viewport={{ once: true, amount: 0.3 }}
         variants={containerVariants}
-        className="bg-background"
+        className="bg-slate-50"
       >
         <div className="container mx-auto px-6 py-12 md:py-16 text-center">
           {/* Label */}
           <motion.p
             variants={itemVariants}
-            className="text-muted-foreground text-xs tracking-[0.3em] uppercase mb-6"
+            className="text-slate-500 text-xs tracking-[0.3em] uppercase mb-6"
           >
             Meet the Founder
           </motion.p>
@@ -98,20 +98,20 @@ export function AboutWake() {
                 <img
                   src="/images/wake-headshot.png"
                   alt="Wake Schepman"
-                  className="w-12 h-12 rounded-full object-cover ring-2 ring-border"
+                  className="w-12 h-12 rounded-full object-cover ring-2 ring-slate-200"
                 />
-                <div className="absolute -bottom-0.5 -right-0.5 w-3 h-3 bg-green-500 rounded-full border-2 border-background" />
+                <div className="absolute -bottom-0.5 -right-0.5 w-3 h-3 bg-green-500 rounded-full border-2 border-slate-50" />
               </div>
               <div className="text-left">
-                <p className="font-bold text-foreground">Wake Schepman</p>
-                <p className="text-sm text-muted-foreground">Founder & Growth Strategist</p>
+                <p className="font-bold text-slate-900">Wake Schepman</p>
+                <p className="text-sm text-slate-500">Founder & Growth Strategist</p>
               </div>
             </motion.div>
 
             {/* Title */}
             <motion.h1
               variants={itemVariants}
-              className="text-3xl md:text-4xl lg:text-5xl font-bold leading-[1.1] text-foreground"
+              className="text-3xl md:text-4xl lg:text-5xl font-bold leading-[1.1] text-slate-900"
             >
               From Pro Skater to{" "}
               <span className="text-accent">Growth Marketing</span>
@@ -124,7 +124,7 @@ export function AboutWake() {
           {/* Subtitle + CTA - centered */}
           <motion.p
             variants={itemVariants}
-            className="max-w-lg mx-auto text-muted-foreground leading-relaxed mb-4"
+            className="max-w-lg mx-auto text-slate-600 leading-relaxed mb-4"
           >
             How professional skating taught me that success comes from authentic storytelling and relentless execution.
           </motion.p>
