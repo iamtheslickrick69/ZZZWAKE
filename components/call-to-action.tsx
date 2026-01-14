@@ -36,7 +36,7 @@ export function CallToAction() {
           <source src="https://pub-82e4016d6e17421ebc1eaa174644bee3.r2.dev/0000wakewater.mp4" type="video/mp4" />
         </video>
         {/* Dark overlay for text readability */}
-        <div className="absolute inset-0 bg-primary/80 backdrop-blur-[2px]" />
+        <div className="absolute inset-0 bg-primary/50" />
       </div>
 
       {/* Content */}

@@ -56,24 +56,24 @@ const containerVariants = {
   hidden: { opacity: 0 },
   visible: {
     opacity: 1,
-    transition: { staggerChildren: 0.15 },
+    transition: { staggerChildren: 0.1 },
   },
 }
 
 const itemVariants = {
-  hidden: { opacity: 0, y: 30 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } },
+  hidden: { opacity: 0, y: 20 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: "easeOut" } },
 }
 
 export function WhoWeWorkWith() {
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null)
 
   return (
-    <section className="relative py-24 md:py-32 overflow-hidden">
+    <section className="relative py-16 md:py-20 overflow-hidden">
       {/* Animated gradient background */}
       <div className="absolute inset-0 bg-gradient-to-br from-slate-100 via-white to-slate-50" />
-      <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-accent/5 rounded-full blur-3xl" />
-      <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-blue-500/5 rounded-full blur-3xl" />
+      <div className="absolute top-0 right-0 w-[300px] h-[300px] bg-accent/5 rounded-full blur-3xl" />
+      <div className="absolute bottom-0 left-0 w-[250px] h-[250px] bg-blue-500/5 rounded-full blur-3xl" />
 
       <motion.div
         initial="hidden"
@@ -83,21 +83,21 @@ export function WhoWeWorkWith() {
         className="relative z-10 container mx-auto px-6 md:px-12"
       >
         {/* Header */}
-        <motion.div variants={itemVariants} className="max-w-3xl mb-16">
-          <Badge className="mb-4 bg-accent/10 text-accent border-accent/20">
+        <motion.div variants={itemVariants} className="max-w-2xl mb-10">
+          <Badge className="mb-3 bg-accent/10 text-accent border-accent/20 text-xs">
             <Sparkles className="w-3 h-3 mr-1" />
             Who We Work With
           </Badge>
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold leading-[1.1] tracking-tight mb-6">
+          <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold leading-[1.1] tracking-tight mb-4">
             Built for Marketing Leaders Who Demand <HighlightedText>Results</HighlightedText>
           </h2>
-          <p className="text-lg text-muted-foreground leading-relaxed">
+          <p className="text-base text-muted-foreground leading-relaxed">
             We partner with companies that have existing marketing budgets and established operations. Our clients aren't looking for flashy campaigns — they want systematic improvements backed by data.
           </p>
         </motion.div>
 
         {/* Bento Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
           {industries.map((industry, index) => {
             const Icon = industry.icon
             const isHovered = hoveredIndex === index
@@ -117,11 +117,11 @@ export function WhoWeWorkWith() {
                 <Link href="#contact" className="block">
                   <motion.div
                     className={cn(
-                      "relative overflow-hidden rounded-3xl shadow-lg",
-                      isLarge ? "h-80 lg:h-[420px]" : "h-80 lg:h-[420px]"
+                      "relative overflow-hidden rounded-2xl shadow-md",
+                      isLarge ? "h-56 lg:h-[280px]" : "h-56 lg:h-[280px]"
                     )}
-                    whileHover={{ y: -10, scale: 1.02 }}
-                    transition={{ duration: 0.4, ease: "easeOut" }}
+                    whileHover={{ y: -6, scale: 1.01 }}
+                    transition={{ duration: 0.3, ease: "easeOut" }}
                   >
                     {/* Background Image */}
                     <div className="absolute inset-0">
@@ -129,8 +129,8 @@ export function WhoWeWorkWith() {
                         src={industry.image}
                         alt={industry.title}
                         className={cn(
-                          "w-full h-full object-cover transition-transform duration-700",
-                          isHovered ? "scale-110" : "scale-100"
+                          "w-full h-full object-cover transition-transform duration-500",
+                          isHovered ? "scale-105" : "scale-100"
                         )}
                       />
                       {/* Always-visible gradient overlay */}
@@ -138,90 +138,58 @@ export function WhoWeWorkWith() {
                     </div>
 
                     {/* Content */}
-                    <div className="relative z-10 h-full p-6 md:p-8 flex flex-col justify-between">
-                      {/* Top Row: Icon + Stats (ALWAYS VISIBLE) */}
+                    <div className="relative z-10 h-full p-5 flex flex-col justify-between">
+                      {/* Top Row: Icon + Stats */}
                       <div className="flex items-start justify-between">
                         {/* Icon with glow */}
                         <div className="relative">
                           <div className={cn(
-                            "absolute inset-0 rounded-2xl blur-xl transition-opacity duration-300",
+                            "absolute inset-0 rounded-xl blur-lg transition-opacity duration-300",
                             `bg-gradient-to-br ${industry.color}`,
                             isHovered ? "opacity-60" : "opacity-30"
                           )} />
                           <motion.div
                             className={cn(
-                              "relative w-16 h-16 rounded-2xl flex items-center justify-center",
+                              "relative w-11 h-11 rounded-xl flex items-center justify-center",
                               `bg-gradient-to-br ${industry.color}`
                             )}
-                            animate={{ rotate: isHovered ? 10 : 0 }}
+                            animate={{ rotate: isHovered ? 8 : 0 }}
                             transition={{ duration: 0.3 }}
                           >
-                            <Icon className="w-8 h-8 text-white" />
+                            <Icon className="w-5 h-5 text-white" />
                           </motion.div>
                         </div>
 
-                        {/* Stats Badge (ALWAYS VISIBLE) */}
-                        <div className="bg-white/95 backdrop-blur-sm text-slate-900 text-sm font-bold px-4 py-2 rounded-full shadow-lg">
+                        {/* Stats Badge */}
+                        <div className="bg-white/95 backdrop-blur-sm text-slate-900 text-xs font-bold px-3 py-1.5 rounded-full shadow-md">
                           {industry.stats}
                         </div>
                       </div>
 
-                      {/* Bottom: Title + Description (ALWAYS VISIBLE) */}
+                      {/* Bottom: Title + Description */}
                       <div>
                         {/* Industry short label */}
                         <span className={cn(
-                          "inline-block text-xs font-bold uppercase tracking-wider mb-2 px-2 py-1 rounded",
+                          "inline-block text-[10px] font-bold uppercase tracking-wider mb-1.5 px-2 py-0.5 rounded",
                           `bg-gradient-to-r ${industry.color} text-white`
                         )}>
                           {industry.shortTitle}
                         </span>
 
-                        {/* Title - ALWAYS VISIBLE */}
-                        <h3 className="text-2xl md:text-3xl font-bold text-white mb-3">
+                        {/* Title */}
+                        <h3 className="text-lg md:text-xl font-bold text-white mb-2">
                           {industry.title}
                         </h3>
 
-                        {/* Description - ALWAYS VISIBLE but more visible on hover */}
+                        {/* Description */}
                         <p className={cn(
-                          "text-white/70 leading-relaxed mb-4 transition-all duration-300 line-clamp-2",
-                          isHovered && "text-white/90 line-clamp-none"
+                          "text-white/70 text-sm leading-relaxed line-clamp-2 transition-all duration-300",
+                          isHovered && "text-white/90"
                         )}>
                           {industry.description}
                         </p>
-
-                        {/* CTA Button - Appears on hover */}
-                        <motion.div
-                          initial={{ opacity: 0, y: 20 }}
-                          animate={{
-                            opacity: isHovered ? 1 : 0,
-                            y: isHovered ? 0 : 20
-                          }}
-                          transition={{ duration: 0.3 }}
-                        >
-                          <Button
-                            size="sm"
-                            className={cn(
-                              "text-white border-0",
-                              `bg-gradient-to-r ${industry.color} hover:opacity-90`
-                            )}
-                          >
-                            View Case Study
-                            <ArrowRight className="w-4 h-4 ml-2" />
-                          </Button>
-                        </motion.div>
                       </div>
                     </div>
-
-                    {/* Hover border glow */}
-                    <motion.div
-                      className={cn(
-                        "absolute inset-0 rounded-3xl border-2 transition-opacity duration-300 pointer-events-none",
-                        isHovered ? "opacity-100" : "opacity-0"
-                      )}
-                      style={{
-                        borderImage: `linear-gradient(135deg, ${industry.color.includes('rose') ? '#f43f5e' : industry.color.includes('blue') ? '#3b82f6' : industry.color.includes('orange') ? '#f97316' : '#10b981'}, transparent) 1`
-                      }}
-                    />
                   </motion.div>
                 </Link>
               </motion.div>
@@ -230,9 +198,9 @@ export function WhoWeWorkWith() {
         </div>
 
         {/* Bottom CTA */}
-        <motion.div variants={itemVariants} className="text-center mt-16">
-          <p className="text-muted-foreground mb-4">Don't see your industry? We work with businesses across all sectors.</p>
-          <Button asChild variant="outline" size="lg">
+        <motion.div variants={itemVariants} className="text-center mt-10">
+          <p className="text-muted-foreground text-sm mb-3">Don't see your industry? We work with businesses across all sectors.</p>
+          <Button asChild variant="outline" size="sm">
             <Link href="#contact">
               Let's Talk About Your Business
               <ArrowRight className="w-4 h-4 ml-2" />

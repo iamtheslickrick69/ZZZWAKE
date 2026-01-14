@@ -79,21 +79,7 @@ export function Services() {
   const ActiveIcon = services.find(s => s.id === activeId)?.icon || Target
 
   return (
-    <section id="services" className="relative py-24 md:py-32 overflow-hidden">
-      {/* Video Background */}
-      <div className="absolute inset-0 w-full h-full">
-        <video
-          autoPlay
-          loop
-          muted
-          playsInline
-          className="absolute inset-0 w-full h-full object-cover"
-        >
-          <source src="https://pub-7824dae2ffd24193b52760c54972be1d.r2.dev/111peachbaby.mp4" type="video/mp4" />
-        </video>
-        {/* Dark overlay */}
-        <div className="absolute inset-0 bg-black/80" />
-      </div>
+    <section id="services" className="relative py-24 md:py-32 bg-neutral-100">
 
       {/* Content */}
       <motion.div
@@ -101,27 +87,27 @@ export function Services() {
         whileInView="show"
         viewport={{ once: true, amount: 0.2 }}
         variants={containerVariants}
-        className="relative z-10 container mx-auto max-w-6xl px-6"
+        className="container mx-auto max-w-6xl px-6"
       >
         {/* Header */}
         <div className="text-center mb-16">
           <motion.p
             variants={itemVariants}
-            className="text-accent text-sm tracking-[0.3em] uppercase mb-4"
+            className="text-neutral-400 text-sm tracking-[0.3em] uppercase mb-4"
           >
             Our Services
           </motion.p>
 
           <motion.h2
             variants={itemVariants}
-            className="text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight mb-6 text-white"
+            className="text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight mb-6 text-neutral-900"
           >
             Three Paths to <HighlightedText>Systematic Growth</HighlightedText>
           </motion.h2>
 
           <motion.p
             variants={itemVariants}
-            className="text-lg text-white/70 max-w-2xl mx-auto"
+            className="text-lg text-neutral-500 max-w-2xl mx-auto"
           >
             Strategic marketing services designed to meet you where you are and take you where you want to go.
           </motion.p>
@@ -143,7 +129,7 @@ export function Services() {
                 <AccordionItem
                   key={service.id}
                   value={`item-${service.id}`}
-                  className="border-white/10"
+                  className="border-neutral-200"
                 >
                   <AccordionTrigger
                     onClick={() => {
@@ -155,26 +141,26 @@ export function Services() {
                     <div className="flex items-center gap-4 text-left">
                       <div className={`w-12 h-12 rounded-xl flex items-center justify-center transition-all ${
                         service.id === activeId
-                          ? "bg-accent text-white"
-                          : "bg-white/10 text-white/60"
+                          ? "bg-neutral-900 text-white"
+                          : "bg-neutral-200 text-neutral-400"
                       }`}>
                         <service.icon className="w-6 h-6" />
                       </div>
                       <span className={`text-xl font-semibold transition-colors ${
-                        service.id === activeId ? "text-white" : "text-white/60"
+                        service.id === activeId ? "text-neutral-900" : "text-neutral-400"
                       }`}>
                         {service.title}
                       </span>
                     </div>
                   </AccordionTrigger>
                   <AccordionContent className="pb-6">
-                    <p className="text-white/70 mb-4 pl-16">
+                    <p className="text-neutral-600 mb-4 pl-16">
                       {service.description}
                     </p>
                     <ul className="space-y-2 pl-16">
                       {service.features.map((feature, idx) => (
-                        <li key={idx} className="flex items-center gap-2 text-white/80">
-                          <CheckCircle2 className="w-4 h-4 text-accent flex-shrink-0" />
+                        <li key={idx} className="flex items-center gap-2 text-neutral-700">
+                          <CheckCircle2 className="w-4 h-4 text-neutral-400 flex-shrink-0" />
                           <span className="text-sm">{feature}</span>
                         </li>
                       ))}
@@ -195,7 +181,7 @@ export function Services() {
 
           {/* Right: Dynamic Image */}
           <div className="hidden lg:block w-1/2 sticky top-32">
-            <div className="relative rounded-2xl overflow-hidden bg-white/5 border border-white/10">
+            <div className="relative rounded-2xl overflow-hidden bg-neutral-200 border border-neutral-200 shadow-lg">
               <img
                 src={activeImage}
                 alt="Service preview"
@@ -204,8 +190,8 @@ export function Services() {
               {/* Overlay with icon */}
               <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
               <div className="absolute bottom-6 left-6 flex items-center gap-3">
-                <div className="w-12 h-12 rounded-xl bg-accent flex items-center justify-center">
-                  <ActiveIcon className="w-6 h-6 text-white" />
+                <div className="w-12 h-12 rounded-xl bg-white flex items-center justify-center">
+                  <ActiveIcon className="w-6 h-6 text-neutral-900" />
                 </div>
                 <span className="text-white font-semibold text-lg">
                   {services.find(s => s.id === activeId)?.title}

@@ -129,17 +129,17 @@ export function Hero() {
 
         {/* Animated gradient overlay */}
         <div
-          className="absolute inset-0 bg-gradient-to-br from-primary/80 via-primary/50 to-primary/70 animate-gradient-shift"
+          className="absolute inset-0 bg-gradient-to-br from-primary/50 via-primary/30 to-primary/40 animate-gradient-shift"
           style={{
             backgroundSize: "400% 400%",
           }}
         />
 
         {/* Static overlay for consistent readability */}
-        <div className="absolute inset-0 bg-gradient-to-b from-primary/40 via-transparent to-primary/60" />
+        <div className="absolute inset-0 bg-gradient-to-b from-primary/20 via-transparent to-primary/40" />
 
         {/* Vignette */}
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_0%,rgba(0,0,0,0.3)_100%)]" />
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_0%,rgba(0,0,0,0.15)_100%)]" />
       </div>
 
       {/* Video progress indicators */}
