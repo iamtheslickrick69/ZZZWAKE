@@ -534,32 +534,3 @@ export function AboutWake() {
     </section>
   )
 }
-2 h-12 bg-white/20 rounded-full flex items-center justify-center mx-auto mb-3">
-                <Phone className="w-6 h-6" />
-              </div>
-              <h4 className="font-semibold mb-1">Book a Call</h4>
-              <p className="text-sm opacity-80">Free 15-min strategy session</p>
-            </div>
-
-            <div className="bg-card rounded-xl p-5 text-center hover:shadow-lg transition-all duration-300 border border-border hover:border-accent/30">
-              <div className="w-12 h-12 bg-accent/10 rounded-full flex items-center justify-center mx-auto mb-3">
-                <MapPin className="w-6 h-6 text-accent" />
-              </div>
-              <h4 className="font-semibold text-foreground mb-1">Location</h4>
-              <p className="text-sm text-muted-foreground">Atlanta, GA</p>
-            </div>
-          </motion.div>
-
-          <motion.div variants={itemVariants} className="text-center">
-            <Button asChild size="lg" className="px-8">
-              <Link href="#contact">
-                Start a Conversation
-                <ArrowRight className="w-5 h-5 ml-2" />
-              </Link>
-            </Button>
-          </motion.div>
-        </div>
-      </motion.div>
-    </section>
-  )
-}
