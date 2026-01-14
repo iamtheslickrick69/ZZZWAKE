@@ -73,71 +73,96 @@ export function AboutWake() {
 
   return (
     <section id="about" className="w-full">
-      {/* ===== HERO HEADER - Centered Layout ===== */}
+      {/* ===== HERO HEADER - Premium Split Layout ===== */}
       <motion.div
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true, amount: 0.3 }}
         variants={containerVariants}
-        className="bg-slate-50"
+        className="relative bg-gradient-to-br from-slate-50 via-white to-slate-100 overflow-hidden"
       >
-        <div className="container mx-auto px-6 py-12 md:py-16 text-center">
-          {/* Label */}
-          <motion.p
-            variants={itemVariants}
-            className="text-slate-500 text-xs tracking-[0.3em] uppercase mb-6"
-          >
-            Meet the Founder
-          </motion.p>
+        {/* Decorative Elements */}
+        <div className="absolute top-0 right-0 w-96 h-96 bg-accent/5 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2" />
+        <div className="absolute bottom-0 left-0 w-64 h-64 bg-accent/5 rounded-full blur-3xl translate-y-1/2 -translate-x-1/2" />
 
-          {/* Title + Avatar Row */}
-          <div className="flex flex-col md:flex-row items-center justify-center gap-4 md:gap-6 mb-4">
-            {/* Avatar + Name */}
-            <motion.div variants={itemVariants} className="flex items-center gap-3">
+        <div className="container mx-auto px-6 py-16 md:py-20 relative z-10">
+          <div className="flex flex-col lg:flex-row items-center gap-10 lg:gap-16">
+
+            {/* Left Side - Avatar with decorative frame */}
+            <motion.div variants={itemVariants} className="flex-shrink-0">
               <div className="relative">
-                <img
-                  src="/images/wake-headshot.png"
-                  alt="Wake Schepman"
-                  className="w-12 h-12 rounded-full object-cover ring-2 ring-slate-200"
-                />
-                <div className="absolute -bottom-0.5 -right-0.5 w-3 h-3 bg-green-500 rounded-full border-2 border-slate-50" />
-              </div>
-              <div className="text-left">
-                <p className="font-bold text-slate-900">Wake Schepman</p>
-                <p className="text-sm text-slate-500">Founder & Growth Strategist</p>
+                {/* Decorative ring */}
+                <div className="absolute inset-0 w-32 h-32 md:w-40 md:h-40 rounded-full border-2 border-dashed border-accent/30 animate-[spin_20s_linear_infinite]" />
+
+                {/* Avatar container */}
+                <div className="relative w-28 h-28 md:w-36 md:h-36 m-2">
+                  <div className="absolute inset-0 bg-gradient-to-br from-accent to-accent/60 rounded-full p-1">
+                    <img
+                      src="/images/wake-headshot.png"
+                      alt="Wake Schepman"
+                      className="w-full h-full rounded-full object-cover"
+                    />
+                  </div>
+                  {/* Status indicator */}
+                  <div className="absolute bottom-1 right-1 w-5 h-5 bg-green-500 rounded-full border-3 border-white shadow-lg" />
+                </div>
+
+                {/* Name badge */}
+                <div className="absolute -bottom-4 left-1/2 -translate-x-1/2 bg-white rounded-full px-4 py-2 shadow-lg border border-slate-100">
+                  <p className="text-sm font-bold text-slate-900 whitespace-nowrap">Wake Schepman</p>
+                </div>
               </div>
             </motion.div>
 
-            {/* Title */}
-            <motion.h1
-              variants={itemVariants}
-              className="text-3xl md:text-4xl lg:text-5xl font-bold leading-[1.1] text-slate-900"
-            >
-              From Pro Skater to{" "}
-              <span className="text-accent">Growth Marketing</span>
-            </motion.h1>
+            {/* Right Side - Content */}
+            <div className="flex-1 text-center lg:text-left">
+              {/* Label */}
+              <motion.div variants={itemVariants} className="flex items-center justify-center lg:justify-start gap-3 mb-4">
+                <div className="h-px w-8 bg-accent" />
+                <p className="text-accent text-xs font-semibold tracking-[0.3em] uppercase">
+                  Meet the Founder
+                </p>
+              </motion.div>
+
+              {/* Title */}
+              <motion.h1
+                variants={itemVariants}
+                className="text-4xl md:text-5xl lg:text-6xl font-black leading-[1.05] text-slate-900 mb-6"
+              >
+                From Pro Skater
+                <br />
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-accent to-accent/70">
+                  to Growth Marketing
+                </span>
+              </motion.h1>
+
+              {/* Subtitle */}
+              <motion.p
+                variants={itemVariants}
+                className="text-lg text-slate-600 leading-relaxed mb-8 max-w-xl"
+              >
+                How professional skating taught me that success comes from
+                <span className="font-semibold text-slate-800"> authentic storytelling</span> and
+                <span className="font-semibold text-slate-800"> relentless execution</span>.
+              </motion.p>
+
+              {/* CTA + Badge Row */}
+              <motion.div variants={itemVariants} className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4">
+                <Link
+                  href="#contact"
+                  className="inline-flex items-center gap-3 bg-slate-900 text-white px-6 py-3 rounded-full font-semibold hover:bg-accent transition-colors group"
+                >
+                  Let's Work Together
+                  <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                </Link>
+
+                <div className="flex items-center gap-2 text-sm text-slate-500">
+                  <span className="flex h-2 w-2 rounded-full bg-green-500" />
+                  Available for projects
+                </div>
+              </motion.div>
+            </div>
           </div>
-
-          {/* Accent line - centered */}
-          <motion.div variants={itemVariants} className="h-1 w-20 bg-accent mx-auto mb-4" />
-
-          {/* Subtitle + CTA - centered */}
-          <motion.p
-            variants={itemVariants}
-            className="max-w-lg mx-auto text-slate-600 leading-relaxed mb-4"
-          >
-            How professional skating taught me that success comes from authentic storytelling and relentless execution.
-          </motion.p>
-
-          <motion.div variants={itemVariants}>
-            <Link
-              href="#contact"
-              className="inline-flex items-center gap-2 text-sm font-bold tracking-widest text-accent transition-colors hover:text-accent/80"
-            >
-              LET'S WORK TOGETHER
-              <ArrowRight className="w-4 h-4" />
-            </Link>
-          </motion.div>
         </div>
       </motion.div>
 
