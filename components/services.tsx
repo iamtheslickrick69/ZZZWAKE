@@ -1,62 +1,83 @@
 "use client"
 
-import { motion, Variants } from "framer-motion"
-import { ArrowRight, TrendingUp, Target, Megaphone } from "lucide-react"
+import { useState } from "react"
+import { motion } from "framer-motion"
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion"
 import { HighlightedText } from "./highlighted-text"
-import Link from "next/link"
-
-// --- Animation Variants ---
-
-const FADE_UP_VARIANTS: Variants = {
-  hidden: { opacity: 0, y: 30 },
-  show: { opacity: 1, y: 0, transition: { type: "spring", duration: 0.8 } },
-}
-
-const STAGGER_CONTAINER_VARIANTS: Variants = {
-  hidden: { opacity: 0 },
-  show: {
-    opacity: 1,
-    transition: {
-      staggerChildren: 0.2,
-    },
-  },
-}
+import { Target, TrendingUp, Megaphone, CheckCircle2 } from "lucide-react"
 
 // --- Service Data ---
 
 const services = [
   {
-    id: "paid-ads",
-    number: "01",
+    id: 1,
     title: "Paid Advertising Management",
-    description: "Cross-platform campaign management for Google, Meta, TikTok, and LinkedIn with measurable ROI.",
+    image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=1200&auto=format&fit=crop",
     icon: Target,
-    features: ["Google Ads", "Meta Ads", "TikTok", "LinkedIn"],
-    href: "#contact",
+    description: "Cross-platform campaign management for Google, Meta, TikTok, and LinkedIn with measurable ROI. We don't just run ads — we build systematic acquisition engines.",
+    features: [
+      "Google Ads (Search, Display, YouTube)",
+      "Meta Ads (Facebook & Instagram)",
+      "TikTok & LinkedIn Campaigns",
+      "Real-time ROI Tracking & Optimization",
+    ],
   },
   {
-    id: "full-funnel",
-    number: "02",
+    id: 2,
     title: "Full Funnel Marketing Systems",
-    description: "Transform scattered campaigns into predictable, scalable lead generation infrastructure.",
+    image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=1200&auto=format&fit=crop",
     icon: TrendingUp,
-    features: ["Lead Gen", "Automation", "CRM Setup", "Analytics"],
-    href: "#contact",
+    description: "Transform scattered campaigns into predictable, scalable lead generation infrastructure. We build the systems that turn strangers into customers on autopilot.",
+    features: [
+      "Lead Generation & Nurturing Sequences",
+      "Marketing Automation Setup",
+      "CRM Integration & Pipeline Building",
+      "Conversion Rate Optimization",
+    ],
   },
   {
-    id: "content-strategy",
-    number: "03",
+    id: 3,
     title: "Content Strategy & Media",
-    description: "Ongoing content development that builds authority and drives consistent engagement.",
+    image: "https://images.unsplash.com/photo-1499750310107-5fef28a66643?q=80&w=1200&auto=format&fit=crop",
     icon: Megaphone,
-    features: ["Brand Voice", "Social Media", "Video Content", "Copywriting"],
-    href: "#contact",
+    description: "Ongoing content development that builds authority and drives consistent engagement. Your brand voice, amplified across every channel that matters.",
+    features: [
+      "Brand Voice & Messaging Development",
+      "Social Media Strategy & Management",
+      "Video Content Production",
+      "Copywriting & Content Creation",
+    ],
   },
 ]
+
+// --- Animation Variants ---
+
+const containerVariants = {
+  hidden: { opacity: 0 },
+  show: {
+    opacity: 1,
+    transition: { staggerChildren: 0.1 },
+  },
+}
+
+const itemVariants = {
+  hidden: { opacity: 0, y: 20 },
+  show: { opacity: 1, y: 0, transition: { duration: 0.5 } },
+}
 
 // --- Component ---
 
 export function Services() {
+  const [activeId, setActiveId] = useState<number>(1)
+  const [activeImage, setActiveImage] = useState(services[0].image)
+
+  const ActiveIcon = services.find(s => s.id === activeId)?.icon || Target
+
   return (
     <section id="services" className="relative py-24 md:py-32 overflow-hidden">
       {/* Video Background */}
@@ -71,7 +92,7 @@ export function Services() {
           <source src="https://pub-7824dae2ffd24193b52760c54972be1d.r2.dev/111peachbaby.mp4" type="video/mp4" />
         </video>
         {/* Dark overlay */}
-        <div className="absolute inset-0 bg-black/70" />
+        <div className="absolute inset-0 bg-black/80" />
       </div>
 
       {/* Content */}
@@ -79,89 +100,119 @@ export function Services() {
         initial="hidden"
         whileInView="show"
         viewport={{ once: true, amount: 0.2 }}
-        variants={STAGGER_CONTAINER_VARIANTS}
+        variants={containerVariants}
         className="relative z-10 container mx-auto max-w-6xl px-6"
       >
-        {/* Header - Centered */}
-        <div className="mx-auto max-w-3xl text-center mb-16 md:mb-20">
+        {/* Header */}
+        <div className="text-center mb-16">
           <motion.p
-            variants={FADE_UP_VARIANTS}
-            className="text-white/70 text-sm tracking-[0.3em] uppercase mb-6"
+            variants={itemVariants}
+            className="text-accent text-sm tracking-[0.3em] uppercase mb-4"
           >
             Our Services
           </motion.p>
 
           <motion.h2
-            variants={FADE_UP_VARIANTS}
+            variants={itemVariants}
             className="text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight mb-6 text-white"
           >
             Three Paths to <HighlightedText>Systematic Growth</HighlightedText>
           </motion.h2>
 
           <motion.p
-            variants={FADE_UP_VARIANTS}
-            className="text-lg text-white/80 leading-relaxed"
+            variants={itemVariants}
+            className="text-lg text-white/70 max-w-2xl mx-auto"
           >
             Strategic marketing services designed to meet you where you are and take you where you want to go.
           </motion.p>
         </div>
 
-        {/* Service Cards Grid */}
+        {/* Accordion + Image Layout */}
         <motion.div
-          variants={STAGGER_CONTAINER_VARIANTS}
-          className="grid grid-cols-1 gap-6 md:grid-cols-3"
+          variants={itemVariants}
+          className="flex flex-col lg:flex-row items-start gap-8 lg:gap-12"
         >
-          {services.map((service) => (
-            <motion.div
-              key={service.id}
-              variants={FADE_UP_VARIANTS}
-              whileHover={{ y: -8 }}
-              transition={{ type: "spring", stiffness: 300 }}
+          {/* Left: Accordion */}
+          <div className="w-full lg:w-1/2">
+            <Accordion
+              type="single"
+              defaultValue="item-1"
+              className="w-full"
             >
-              <Link href={service.href} className="block h-full group">
-                {/* Glassmorphism Card */}
-                <div className="relative h-full rounded-3xl bg-white/10 backdrop-blur-xl border border-white/20 p-8 transition-all duration-500 hover:bg-white/20 hover:border-white/40 hover:shadow-2xl">
-                  {/* Number Badge */}
-                  <div className="absolute top-6 right-6 text-5xl font-black text-white/10 group-hover:text-white/20 transition-colors">
-                    {service.number}
-                  </div>
-
-                  {/* Icon */}
-                  <div className="w-14 h-14 rounded-2xl bg-white/20 flex items-center justify-center mb-6 group-hover:bg-accent group-hover:scale-110 transition-all duration-300">
-                    <service.icon className="w-7 h-7 text-white" />
-                  </div>
-
-                  {/* Title */}
-                  <h3 className="text-xl font-bold text-white mb-3 group-hover:text-accent transition-colors">
-                    {service.title}
-                  </h3>
-
-                  {/* Description */}
-                  <p className="text-white/70 leading-relaxed mb-6">
-                    {service.description}
-                  </p>
-
-                  {/* Features Tags */}
-                  <div className="flex flex-wrap gap-2 mb-6">
-                    {service.features.map((feature) => (
-                      <span
-                        key={feature}
-                        className="px-3 py-1 text-xs font-medium rounded-full bg-white/10 text-white/80 border border-white/10"
-                      >
-                        {feature}
+              {services.map((service) => (
+                <AccordionItem
+                  key={service.id}
+                  value={`item-${service.id}`}
+                  className="border-white/10"
+                >
+                  <AccordionTrigger
+                    onClick={() => {
+                      setActiveImage(service.image)
+                      setActiveId(service.id)
+                    }}
+                    className="py-6 !no-underline hover:no-underline group"
+                  >
+                    <div className="flex items-center gap-4 text-left">
+                      <div className={`w-12 h-12 rounded-xl flex items-center justify-center transition-all ${
+                        service.id === activeId
+                          ? "bg-accent text-white"
+                          : "bg-white/10 text-white/60"
+                      }`}>
+                        <service.icon className="w-6 h-6" />
+                      </div>
+                      <span className={`text-xl font-semibold transition-colors ${
+                        service.id === activeId ? "text-white" : "text-white/60"
+                      }`}>
+                        {service.title}
                       </span>
-                    ))}
-                  </div>
+                    </div>
+                  </AccordionTrigger>
+                  <AccordionContent className="pb-6">
+                    <p className="text-white/70 mb-4 pl-16">
+                      {service.description}
+                    </p>
+                    <ul className="space-y-2 pl-16">
+                      {service.features.map((feature, idx) => (
+                        <li key={idx} className="flex items-center gap-2 text-white/80">
+                          <CheckCircle2 className="w-4 h-4 text-accent flex-shrink-0" />
+                          <span className="text-sm">{feature}</span>
+                        </li>
+                      ))}
+                    </ul>
+                    {/* Mobile Image */}
+                    <div className="mt-6 lg:hidden pl-16">
+                      <img
+                        src={service.image}
+                        alt={service.title}
+                        className="w-full h-48 object-cover rounded-xl"
+                      />
+                    </div>
+                  </AccordionContent>
+                </AccordionItem>
+              ))}
+            </Accordion>
+          </div>
 
-                  {/* CTA */}
-                  <div className="flex items-center gap-2 text-sm font-semibold text-accent group-hover:gap-3 transition-all">
-                    Learn More
-                    <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-                  </div>
+          {/* Right: Dynamic Image */}
+          <div className="hidden lg:block w-1/2 sticky top-32">
+            <div className="relative rounded-2xl overflow-hidden bg-white/5 border border-white/10">
+              <img
+                src={activeImage}
+                alt="Service preview"
+                className="w-full aspect-[4/3] object-cover"
+              />
+              {/* Overlay with icon */}
+              <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
+              <div className="absolute bottom-6 left-6 flex items-center gap-3">
+                <div className="w-12 h-12 rounded-xl bg-accent flex items-center justify-center">
+                  <ActiveIcon className="w-6 h-6 text-white" />
                 </div>
-              </Link>
-            </motion.div>
-          ))}
+                <span className="text-white font-semibold text-lg">
+                  {services.find(s => s.id === activeId)?.title}
+                </span>
+              </div>
+            </div>
+          </div>
         </motion.div>
       </motion.div>
     </section>
