@@ -70,6 +70,8 @@ export function Services() {
         >
           <source src="https://pub-7824dae2ffd24193b52760c54972be1d.r2.dev/111peachbaby.mp4" type="video/mp4" />
         </video>
+        {/* Dark overlay */}
+        <div className="absolute inset-0 bg-black/70" />
       </div>
 
       {/* Content */}
